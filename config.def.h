@@ -127,10 +127,10 @@ static Key keys[] = {
   // { MODKEY,                       XK_u,      setlayout,      {.v = &layouts[2]} },
   // { MODKEY,                       XK_space,  setlayout,      {0} },  // 在最近的两个layout之间交换
 
-  // { MODKEY | ShiftMask,    XK_j,      justFMove,     {.v = "0x 25y" } },  // move
-  // { MODKEY | ShiftMask,    XK_k,      justFMove,     {.v = "0x -25y" } },
-  // { MODKEY | ShiftMask,    XK_l,      justFMove,     {.v = "25x 0y" } },
-  // { MODKEY | ShiftMask,    XK_h,      justFMove,     {.v = "-25x 0y" } },
+  { MODKEY | ShiftMask,    XK_j,      justFMove,     {.v = "0x 25y" } },  // move
+  { MODKEY | ShiftMask,    XK_k,      justFMove,     {.v = "0x -25y" } },
+  { MODKEY | ShiftMask,    XK_l,      justFMove,     {.v = "25x 0y" } },
+  { MODKEY | ShiftMask,    XK_h,      justFMove,     {.v = "-25x 0y" } },
 
   {MODKEY, XK_s,      spawn,          SHCMD("~/dotfiles/my_script/tray_toggle.sh")},
 
