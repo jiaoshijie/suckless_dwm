@@ -14,18 +14,19 @@ static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_magenta[]     = "#FF00FF";
 static const char col_blue[]        = "#5587FF";
+static const char col_yellow[]      = "#F0D413";
 static const char col_light_bg[] = "#E8DFE2";
 static const char col_light_fg[] = "#2C1E1D";
 static const char col_dark_bg[]  = "#252525";
 static const char col_dark_fg[]  = "#E5E5E5";
 static const char *colors[][3]      = {
   /*               fg         bg         border   */
-    [SchemeNorm] = {col_light_fg, col_light_bg, col_gray1},
-    [SchemeSel] = {col_blue, col_light_bg, col_magenta},
+    [SchemeNorm] = {col_dark_fg, col_dark_bg, col_gray1},
+    [SchemeSel] = {col_yellow, col_dark_bg, col_magenta},
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 
 static const Rule rules[] = {
   /* xprop(1):
@@ -41,7 +42,6 @@ static const Rule rules[] = {
   {"VirtualBox Machine", "VirtualBox Machine", NULL, 0, 0, -1},
   {"Gcolor2", NULL, NULL, 0, 1, -1},
   {"flameshot", NULL, NULL, 0, 1, -1},
-  {"Nutstore", NULL, NULL, 0, 1, -1},
   {"Qemu-system-i386", NULL, NULL, 0, 1, -1},
   {"Pavucontrol", NULL, NULL, 0, 1, -1},
   {"GoldenDict", NULL, NULL, 0, 1, -1},
@@ -88,10 +88,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 static Key keys[] = {
   /* modifier                     key        function        argument */
-  { MODKEY|ShiftMask,             XK_e,      quit,           {0} },
+  { MODKEY|ControlMask|ShiftMask,             XK_e,      quit,           {0} },
   TAGKEYS(                        XK_1,                      0)
   TAGKEYS(                        XK_2,                      1)
   TAGKEYS(                        XK_3,                      2)
@@ -105,7 +107,7 @@ static Key keys[] = {
   // { MODKEY,                       XK_0,      view,           {.ui = ~0 } },  // 在一个窗口显示所有标签中的内容
   // { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },  // 将当前选中的窗口放在所有标签中同步显示
 
-  // { MODKEY,                       XK_minus,  togglescratch,  {.v = scratchpadcmd } },
+  { MODKEY,                       XK_minus,  togglescratch,  {.v = scratchpadcmd } },
 
   { MODKEY | ShiftMask , XK_f , togglebar     , {0} } ,
   { MODKEY             , XK_f , togglefullscr , {0} } ,
