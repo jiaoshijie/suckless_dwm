@@ -108,7 +108,7 @@ static Key keys[] = {
   // { MODKEY,                       XK_minus,  togglescratch,  {.v = scratchpadcmd } },
 
   { MODKEY | ShiftMask , XK_f , togglebar     , {0} } ,
-  // { MODKEY             , XK_f , togglefullscr , {0} } ,
+  { MODKEY             , XK_f , togglefullscr , {0} } ,
 
   { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
   { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
