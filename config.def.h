@@ -22,7 +22,7 @@ static const char col_dark_fg[]  = "#E5E5E5";
 static const char *colors[][3]      = {
   /*               fg         bg         border   */
     [SchemeNorm] = {col_dark_fg, col_dark_bg, col_gray1},
-    [SchemeSel] = {col_yellow, col_dark_bg, col_magenta},
+    [SchemeSel] = {col_blue, col_dark_bg, col_blue},
 };
 
 /* tagging */
@@ -33,31 +33,26 @@ static const Rule rules[] = {
    *  WM_CLASS(STRING) = instance, class
    *  WM_NAME(STRING) = title
    */
-  /* class, instance, title, tags mask, isfloating, monitor */
-  // floating
-  {"GIMP Startup", NULL, NULL, 0, 1, -1},
-  {"shadowsocks-qt5", "ss-qt5", NULL, 0, 1, -1},
-  {"VirtualBox Manager", "VirtualBox Manager", NULL, 0, 1, -1},
-  // {"VirtualBox", NULL, NULL, 0, 0, -1},
-  {"VirtualBox Machine", "VirtualBox Machine", NULL, 0, 0, -1},
-  {"Gcolor2", NULL, NULL, 0, 1, -1},
-  {"flameshot", NULL, NULL, 0, 1, -1},
-  {"Qemu-system-i386", NULL, NULL, 0, 1, -1},
-  {"Pavucontrol", NULL, NULL, 0, 1, -1},
-  {"GoldenDict", NULL, NULL, 0, 1, -1},
-  {"copyq", NULL, NULL, 0, 1, -1},
-  {"fcitx5-config-qt", NULL, NULL, 0, 1, -1},
-  {"Webcamoid", "webcamoid", NULL, 0, 1, -1},
-  {"Lxappearance", NULL, NULL, 0, 1, -1},
-  {"qt5ct", NULL, NULL, 0, 1, -1},
-  {"qt6ct", NULL, NULL, 0, 1, -1},
-  {"smplayer", NULL, NULL, 0, 1, -1},
-  {"Sxiv", "DingImage", NULL, 0, 1, -1},
-  {"Pcmanfm", "pcmanfm", NULL, 0, 1, -1},
-  {"eudic", NULL, NULL, 0, 1, -1},
-
-  // conflict
-  {"Alacritty", "Alacritty", "filemanager", 0, 1, -1},
+  /* class              , instance             , title          , tags mask , isfloating , monitor , */
+  {"GIMP Startup"       , NULL                 , NULL           , 0         , 1          , -1},
+  {"shadowsocks-qt5"    , "ss-qt5"             , NULL           , 0         , 1          , -1},
+  {"VirtualBox Manager" , "VirtualBox Manager" , NULL           , 0         , 1          , -1},
+  {"VirtualBox Machine" , "VirtualBox Machine" , NULL           , 0         , 0          , -1},
+  {"Gcolor3"            , NULL                 , NULL           , 0         , 1          , -1},
+  {"flameshot"          , NULL                 , NULL           , 0         , 1          , -1},
+  {"Qemu-system-i386"   , NULL                 , NULL           , 0         , 1          , -1},
+  {"Pavucontrol"        , NULL                 , NULL           , 0         , 1          , -1},
+  {"GoldenDict"         , NULL                 , NULL           , 0         , 1          , -1},
+  {"fcitx5-config-qt"   , NULL                 , NULL           , 0         , 1          , -1},
+  {"Webcamoid"          , "webcamoid"          , NULL           , 0         , 1          , -1},
+  {"Lxappearance"       , NULL                 , NULL           , 0         , 1          , -1},
+  {"qt5ct"              , NULL                 , NULL           , 0         , 1          , -1},
+  {"qt6ct"              , NULL                 , NULL           , 0         , 1          , -1},
+  {"Pcmanfm"            , "pcmanfm"            , NULL           , 0         , 1          , -1},
+  {"eudic"              , NULL                 , NULL           , 0         , 1          , -1},
+  {"Steam"              , "Steam"              , "好友列表"     , 0         , 1          , -1},
+  {"Steam"              , "Steam"              , "Steam - 新闻" , 0         , 1          , -1},
+  {"Qemu-system-x86_64" , "qemu"               , "QEMU"         , 0         , 1          , -1},
 };
 
 /* layout(s) */
@@ -120,9 +115,9 @@ static Key keys[] = {
   { MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
   { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
-  // 修改 "[]=" 的布局方式
-  // { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-  // { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+  // 修改 "[]=" 的布局方式 bracketleft->[, bracketright->]
+  { MODKEY,             XK_bracketleft,      incnmaster,     {.i = +1 } },
+  { MODKEY,             XK_bracketright,      incnmaster,     {.i = -1 } },
 
   { MODKEY             , XK_0 , setlayout , {.v = &layouts[0]} } ,
   { MODKEY | ShiftMask , XK_0 , setlayout , {.v = &layouts[1]} } ,
@@ -134,7 +129,7 @@ static Key keys[] = {
   { MODKEY | ShiftMask,    XK_l,      justFMove,     {.v = "25x 0y" } },
   { MODKEY | ShiftMask,    XK_h,      justFMove,     {.v = "-25x 0y" } },
 
-  {MODKEY, XK_s,      spawn,          SHCMD("~/dotfiles/my_script/tray_toggle.sh")},
+  {MODKEY, XK_s,      spawn,          SHCMD("tray_toggle")},
 
   // NOTE: 多显示器(monitor)
   { MODKEY,                       XK_Left,  focusmon,       {.i = -1 } },
