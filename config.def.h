@@ -53,6 +53,7 @@ static const Rule rules[] = {
   {"Steam"              , "Steam"              , "好友列表"     , 0         , 1          , -1},
   {"Steam"              , "Steam"              , "Steam - 新闻" , 0         , 1          , -1},
   {"Qemu-system-x86_64" , "qemu"               , "QEMU"         , 0         , 1          , -1},
+  {"Blueman-manager"    , "blueman-manager"    , NULL           , 0         , 1          , -1},
 };
 
 /* layout(s) */
