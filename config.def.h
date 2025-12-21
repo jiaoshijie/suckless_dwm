@@ -34,20 +34,23 @@ static const Rule rules[] = {
    *  WM_NAME(STRING) = title
    */
   /* class              , instance             , title          , tags mask , isfloating , monitor , */
-  {"GIMP Startup"       , NULL                 , NULL                 , 0 , 1 , -1},
-  {"flameshot"          , NULL                 , NULL                 , 0 , 1 , -1},
-  {"Qemu-system-i386"   , NULL                 , NULL                 , 0 , 1 , -1},
-  {"Qemu-system-x86_64" , "qemu"               , "QEMU"               , 0 , 1 , -1},
-  {"Pavucontrol"        , NULL                 , NULL                 , 0 , 1 , -1},
-  {"fcitx5-config-qt"   , NULL                 , NULL                 , 0 , 1 , -1},
-  {"Webcamoid"          , "webcamoid"          , NULL                 , 0 , 1 , -1},
-  {"Lxappearance"       , NULL                 , NULL                 , 0 , 1 , -1},
-  {"qt5ct"              , NULL                 , NULL                 , 0 , 1 , -1},
-  {"qt6ct"              , NULL                 , NULL                 , 0 , 1 , -1},
-  {"Pcmanfm"            , "pcmanfm"            , NULL                 , 0 , 1 , -1},
-  {"eudic"              , NULL                 , NULL                 , 0 , 1 , -1},
-  {"Blueman-manager"    , "blueman-manager"    , NULL                 , 0 , 1 , -1},
-  {"Firefox"            , "Toolkit"            , "Picture-in-Picture" , 0 , 1 , -1},
+  {"GIMP Startup"       , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"flameshot"          , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"Qemu-system-i386"   , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"Qemu-system-x86_64" , "qemu"            , "QEMU"               , 0 , 1 , -1} ,
+  {"Pavucontrol"        , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"fcitx5-config-qt"   , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"Webcamoid"          , "webcamoid"       , NULL                 , 0 , 1 , -1} ,
+  {"Lxappearance"       , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"qt5ct"              , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"qt6ct"              , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"Pcmanfm"            , "pcmanfm"         , NULL                 , 0 , 1 , -1} ,
+  {"eudic"              , NULL              , NULL                 , 0 , 1 , -1} ,
+  {"Blueman-manager"    , "blueman-manager" , NULL                 , 0 , 1 , -1} ,
+  {"Firefox"            , "Toolkit"         , "Picture-in-Picture" , 0 , 1 , -1} ,
+  {"Firefox"            , "Places"          , "Library"            , 0 , 1 , -1} ,
+  {"Anki"               , "anki"            , NULL                 , 0 , 1 , -1} ,
+  {"wechat"             , "wechat"          , NULL                 , 0 , 1 , -1} ,
 };
 
 /* layout(s) */
@@ -80,7 +83,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "100x30", NULL };
 
 static Key keys[] = {
   /* modifier                     key        function        argument */
